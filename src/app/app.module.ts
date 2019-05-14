@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { BooksListComponent } from './components/books-list/books-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule, MatCheckboxModule, MatTableModule, MatToolbarModule, MatIconModule, MatDialogModule,
-  MatFormFieldModule, MatInputModule} from '@angular/material';
+  MatFormFieldModule, MatInputModule, MatPaginatorModule, MatSortModule} from '@angular/material';
 import { HeaderComponent } from './components/header/header.component';
 import { AddBookDialogComponent } from './components/add-book-dialog/add-book-dialog.component';
 
@@ -30,7 +30,9 @@ import { AddBookDialogComponent } from './components/add-book-dialog/add-book-di
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
-    FormsModule
+    FormsModule,
+    MatPaginatorModule,
+    MatSortModule
   ],
   providers: [],
   bootstrap: [AppComponent],
