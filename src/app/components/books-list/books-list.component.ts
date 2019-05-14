@@ -93,5 +93,14 @@ export class BooksListComponent implements OnInit {
     book.status = this.readingStatusToString(ReadingStatus.InProgress);
   }
 
+  deleteBook(i: number) {
+
+    this.dataSource.data.splice(i, 1);
+
+    console.log(i);
+    this.table.renderRows();
+    this.dataSource.paginator = this.paginator;
+  }
+
 
 }
