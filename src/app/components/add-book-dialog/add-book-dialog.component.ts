@@ -1,5 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { FormControl } from '@angular/forms';
 
 
 export interface DialogData {
@@ -15,9 +16,12 @@ export interface DialogData {
 
 
 export class AddBookDialogComponent implements OnInit {
+  myControl = new FormControl();
+  options: Array<string>;
   constructor(
     public dialogRef: MatDialogRef<AddBookDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {
+      this.options = ['Polish', 'English'];
     }
 
   onNoClick(): void {

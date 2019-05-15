@@ -1,9 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatTable, MatPaginator, MatSort } from '@angular/material';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatTable, MatPaginator, MatSort, MatSnackBar } from '@angular/material';
 import { AddBookDialogComponent } from '../add-book-dialog/add-book-dialog.component';
 import { MatTableDataSource } from '@angular/material';
 import { Book } from '../models/book';
 import { ReadingStatus } from '../models/readingStatus';
+import { FormControl } from '@angular/forms';
+import { SnackBarComponent } from '../snack-bar/snack-bar.component';
 
 // export interface Book {
 //   author: string;
@@ -26,7 +28,7 @@ export class BooksListComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private dialog: MatDialog) {
+  constructor(private dialog: MatDialog, private snackBar: MatSnackBar) {
     this.columnsToDisplay = ['title', 'author', 'status', 'actions'];
     this.booksList = [{ title: 'Lord of the rings', author: 'J.R.R. Tolkien', status: this.readingStatusToString(ReadingStatus.Completed) },
     { title: 'Green Mile', author: 'S. King', status: this.readingStatusToString(ReadingStatus.Suspended) }];
@@ -42,6 +44,7 @@ export class BooksListComponent implements OnInit {
   openAddBookDialog(): void {
     const dialogRef = this.dialog.open(AddBookDialogComponent, {
       width: '250px',
+      minWidth: '500px',
       data: {}
     });
 
@@ -58,6 +61,7 @@ export class BooksListComponent implements OnInit {
     this.booksList.push(book);
     this.table.renderRows();
     this.dataSource.paginator = this.paginator;
+    this.openSnackBar()
   }
 
   private readingStatusToString(status: ReadingStatus): string {
@@ -100,6 +104,12 @@ export class BooksListComponent implements OnInit {
     console.log(i);
     this.table.renderRows();
     this.dataSource.paginator = this.paginator;
+  }
+
+  openSnackBar() {
+    this.snackBar.openFromComponent(SnackBarComponent, {
+      duration: 2 * 1000,
+    });
   }
 
 

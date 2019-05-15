@@ -4,13 +4,26 @@
         <mat-form-field class="example-full-width">
           <input required name="author" matInput [(ngModel)]="data.author" placeholder="Author">
         </mat-form-field>
-      
         <mat-form-field class="example-full-width">
           <input required name="title" [(ngModel)]="data.title" matInput placeholder="Title">
         </mat-form-field>
-      </form>
+      <mat-form-field class="example-full-width">
+        <input name="format" [(ngModel)]="data.format" matInput placeholder="Format">
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <input name="lang" [(ngModel)]="data.language" matInput placeholder="Language">
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <input type="text" name="language" placeholder="Pick language" aria-label="Language" matInput [formControl]="myControl" [matAutocomplete]="auto">
+        <mat-autocomplete name="123" #auto="matAutocomplete">
+          <mat-option *ngFor="let option of options" [value]="option">
+            {{option}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </form>
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">Close</button>
-  <button [disabled]="!userForm.valid"  mat-button [mat-dialog-close]="data" cdkFocusInitial>Add</button>
+  <button [disabled]="!userForm.valid" color="primary"  mat-raised-button [mat-dialog-close]="data" cdkFocusInitial>Add</button>
 </div>
