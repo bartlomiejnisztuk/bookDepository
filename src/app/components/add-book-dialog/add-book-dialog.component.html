@@ -9,12 +9,9 @@
         </mat-form-field>
       <mat-form-field class="example-full-width">
         <input name="format" [(ngModel)]="data.format" matInput placeholder="Format">
-      </mat-form-field>
+      </mat-form-field>    
       <mat-form-field class="example-full-width">
-        <input name="lang" [(ngModel)]="data.language" matInput placeholder="Language">
-      </mat-form-field>
-      <mat-form-field class="example-full-width">
-        <input type="text" name="language" placeholder="Pick language" aria-label="Language" matInput [formControl]="myControl" [matAutocomplete]="auto">
+        <input  [(ngModel)]="data.language" type="text" name="language" placeholder="Pick language" aria-label="Language" matInput [formControl]="myControl" [matAutocomplete]="auto">
         <mat-autocomplete name="123" #auto="matAutocomplete">
           <mat-option *ngFor="let option of options" [value]="option">
             {{option}}
