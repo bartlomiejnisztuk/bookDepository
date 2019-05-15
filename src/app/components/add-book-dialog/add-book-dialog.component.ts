@@ -6,6 +6,8 @@ import { FormControl } from '@angular/forms';
 export interface DialogData {
   title: string;
   author: string;
+  format: string;
+  language: string;
 }
 
 @Component({

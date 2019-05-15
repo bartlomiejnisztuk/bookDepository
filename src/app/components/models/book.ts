@@ -6,5 +6,6 @@ export class Book{
     author: string;
     status?: string;
     format?: BookFormat;
-    fromStore?: string
+    fromStore?: string;
+    language?: string;
 }
