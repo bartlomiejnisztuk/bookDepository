@@ -1,6 +1,5 @@
 import { Component, OnInit, Inject, ViewChild } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { FormControl } from '@angular/forms';
 import { Book } from '../models/book';
 
 
@@ -29,7 +28,6 @@ export class AddBookDialogComponent implements OnInit {
     this.categoryOptions = ['Fantasy', 'Biography', 'Non-fiction', 'Fiction', 'Thriller', 'Programming/IT', 'Language learning'];
     this.title = this.getTitle(this.dialogData.mode);
     this.data = this.dialogData.book;
-
   }
 
   onNoClick(): void {

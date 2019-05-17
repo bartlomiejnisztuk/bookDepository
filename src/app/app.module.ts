@@ -14,6 +14,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { SnackBarComponent } from './components/snack-bar/snack-bar.component';
+// import './polyfills';
 
 @NgModule({
   declarations: [

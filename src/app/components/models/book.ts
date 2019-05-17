@@ -8,4 +8,5 @@ export class Book{
     format?: BookFormat;
     fromStore?: string;
     language?: string;
+    description?: string;
 }

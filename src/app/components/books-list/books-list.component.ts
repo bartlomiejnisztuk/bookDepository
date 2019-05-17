@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material';
 import { Book } from '../models/book';
 import { ReadingStatus } from '../models/readingStatus';
 import { SnackBarComponent } from '../snack-bar/snack-bar.component';
+import {animate, state, style, transition, trigger} from '@angular/animations';
 
 // export interface Book {
 //   author: string;
@@ -17,7 +18,14 @@ const COLORS: string[] = ['orange', 'green', 'purple',
 @Component({
   selector: 'app-books-list',
   templateUrl: './books-list.component.html',
-  styleUrls: ['./books-list.component.css']
+  styleUrls: ['./books-list.component.css'],
+  animations: [
+    trigger('detailExpand', [
+      state('collapsed', style({height: '0px', minHeight: '0', display: 'none'})),
+      state('expanded', style({height: '*'})),
+      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+    ]),
+  ],
 })
 export class BooksListComponent implements OnInit {
   booksList: Book[];
@@ -26,10 +34,11 @@ export class BooksListComponent implements OnInit {
   @ViewChild(MatTable) table: MatTable<any>;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
+  expandedElement: Book | null;
 
   constructor(private dialog: MatDialog, private snackBar: MatSnackBar) {
     this.columnsToDisplay = ['title', 'author', 'status', 'actions'];
-    this.booksList = [{ title: 'Lord of the rings', author: 'J.R.R. Tolkien', status: this.readingStatusToString(ReadingStatus.Completed) },
+    this.booksList = [{ title: 'Lord of the rings', author: 'J.R.R. Tolkien', description:'example description', status: this.readingStatusToString(ReadingStatus.Completed) },
     { title: 'Green Mile', author: 'S. King', status: this.readingStatusToString(ReadingStatus.Suspended) }];
     this.dataSource = new MatTableDataSource(this.booksList);
   }
