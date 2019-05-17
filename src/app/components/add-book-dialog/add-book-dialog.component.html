@@ -1,4 +1,4 @@
-<h1 mat-dialog-title>Add new book</h1>
+<h1 mat-dialog-title>{{title}}</h1>
 <div  mat-dialog-content>
     <form #userForm="ngForm" class="example-form">
         <mat-form-field class="example-full-width">
@@ -8,13 +8,29 @@
           <input required name="title" [(ngModel)]="data.title" matInput placeholder="Title">
         </mat-form-field>
       <mat-form-field class="example-full-width">
-        <input name="format" [(ngModel)]="data.format" matInput placeholder="Format">
+        <input  [(ngModel)]="data.format" type="text" name="format" placeholder="Format" aria-label="Format" matInput [matAutocomplete]="auto">
+        <mat-autocomplete name="formatAutocomplete" #auto="matAutocomplete">
+          <mat-option *ngFor="let formatOption of formatOptions" [value]="formatOption">
+            {{formatOption}}
+          </mat-option>
+        </mat-autocomplete>
       </mat-form-field>    
       <mat-form-field class="example-full-width">
-        <input  [(ngModel)]="data.language" type="text" name="language" placeholder="Pick language" aria-label="Language" matInput [formControl]="myControl" [matAutocomplete]="auto">
-        <mat-autocomplete name="123" #auto="matAutocomplete">
-          <mat-option *ngFor="let option of options" [value]="option">
-            {{option}}
+        <input  [(ngModel)]="data.language" type="text" name="language" placeholder="Pick language" aria-label="Language" matInput  [matAutocomplete]="autoFormat">
+        <mat-autocomplete name="languageAutocomplete" #autoFormat="matAutocomplete">
+          <mat-option *ngFor="let languageOption of languageOptions" [value]="languageOption">
+            {{languageOption}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <input name="source" [(ngModel)]="data.source" matInput placeholder="Source">
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <input  [(ngModel)]="data.category" type="text" name="category" placeholder="Pick category" aria-label="Category" matInput [matAutocomplete]="autoCategory">
+        <mat-autocomplete name="categoryAutocomplete" #autoCategory="matAutocomplete">
+          <mat-option *ngFor="let categoryOption of categoryOptions" [value]="categoryOption">
+            {{categoryOption}}
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>

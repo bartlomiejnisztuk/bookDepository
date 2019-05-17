@@ -1,13 +1,12 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, ViewChild } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { FormControl } from '@angular/forms';
+import { Book } from '../models/book';
 
 
 export interface DialogData {
-  title: string;
-  author: string;
-  format: string;
-  language: string;
+  book: Book;
+  mode: string
 }
 
 @Component({
@@ -16,18 +15,34 @@ export interface DialogData {
   styleUrls: ['./add-book-dialog.component.css']
 })
 
-
-export class AddBookDialogComponent implements OnInit {
-  myControl = new FormControl();
-  options: Array<string>;
+export class AddBookDialogComponent implements OnInit {  
+  languageOptions: Array<string>;
+  formatOptions: Array<string>;
+  categoryOptions: Array<string>;
+  title: string;
+  data: Book;
   constructor(
     public dialogRef: MatDialogRef<AddBookDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) {
-      this.options = ['Polish', 'English'];
-    }
+    @Inject(MAT_DIALOG_DATA) public dialogData: DialogData) {
+    this.languageOptions = ['Polish', 'English', 'Polish & English'];
+    this.formatOptions = ['Paper', 'ebook', 'pdf', 'audiobook'];
+    this.categoryOptions = ['Fantasy', 'Biography', 'Non-fiction', 'Fiction', 'Thriller', 'Programming/IT', 'Language learning'];
+    this.title = this.getTitle(this.dialogData.mode);
+    this.data = this.dialogData.book;
+
+  }
 
   onNoClick(): void {
     this.dialogRef.close();
+  }
+
+  getTitle(mode: string): string {
+    if(mode == 'add'){
+      return 'Add book';
+    }
+    else{
+      return 'Edit book';
+    }
   }
 
 

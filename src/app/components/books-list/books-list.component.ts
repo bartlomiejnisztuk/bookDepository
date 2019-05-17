@@ -4,7 +4,6 @@ import { AddBookDialogComponent } from '../add-book-dialog/add-book-dialog.compo
 import { MatTableDataSource } from '@angular/material';
 import { Book } from '../models/book';
 import { ReadingStatus } from '../models/readingStatus';
-import { FormControl } from '@angular/forms';
 import { SnackBarComponent } from '../snack-bar/snack-bar.component';
 
 // export interface Book {
@@ -45,7 +44,7 @@ export class BooksListComponent implements OnInit {
     const dialogRef = this.dialog.open(AddBookDialogComponent, {
       width: '250px',
       minWidth: '500px',
-      data: {}
+      data: {book:{}, mode: 'add'}
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -104,6 +103,23 @@ export class BooksListComponent implements OnInit {
     console.log(i);
     this.table.renderRows();
     this.dataSource.paginator = this.paginator;
+  }
+
+  editBook(book: Book, index: number) {
+    console.log(book);
+    console.log(index);
+    const dialogRef = this.dialog.open(AddBookDialogComponent, {
+      width: '250px',
+      minWidth: '500px',
+      data: {book: book, mode: 'edit'}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      if (result) {
+        this.addBookToList(result);
+      }
+    });
   }
 
   openSnackBar() {
