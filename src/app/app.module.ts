@@ -15,6 +15,7 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { SnackBarComponent } from './components/snack-bar/snack-bar.component';
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
+import { LoginPageComponent } from './components/login-page/login-page.component';
 // import './polyfills';
 
 @NgModule({
@@ -24,7 +25,8 @@ import { FileUploadComponent } from './components/file-upload/file-upload.compon
     HeaderComponent,
     AddBookDialogComponent,
     SnackBarComponent,
-    FileUploadComponent
+    FileUploadComponent,
+    LoginPageComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +47,6 @@ import { FileUploadComponent } from './components/file-upload/file-upload.compon
     ReactiveFormsModule,
     MatButtonToggleModule,
     MatSnackBarModule
-    
   ],
   providers: [],
   bootstrap: [AppComponent],

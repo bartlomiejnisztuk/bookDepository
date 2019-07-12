@@ -1,0 +1,14 @@
+<div class="center">
+<form class="login-form">
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="User" value="Sushi" [(ngModel)]="data.userName" name="userName">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <input type="password" matInput="password" placeholder="Password" [(ngModel)]="data.password" name="password"/>
+  </mat-form-field>
+  <button mat-raised-button (click)="login()" color="primary">
+    Login
+  </button>
+</form>
+</div>
