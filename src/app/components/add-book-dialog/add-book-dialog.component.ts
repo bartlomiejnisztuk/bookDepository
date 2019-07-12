@@ -35,10 +35,9 @@ export class AddBookDialogComponent implements OnInit {
   }
 
   getTitle(mode: string): string {
-    if(mode == 'add'){
+    if (mode === 'add') {
       return 'Add book';
-    }
-    else{
+    } else {
       return 'Edit book';
     }
   }

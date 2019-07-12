@@ -72,6 +72,14 @@ export class BooksListComponent implements OnInit {
     this.openSnackBar()
   }
 
+  editExistingBook(book: Book): void {
+    let bookToEditIndex = this.booksList.findIndex(x => x.title === book.title);
+    this.booksList.splice(bookToEditIndex, 1, book); // removes and adds edited entry
+    this.table.renderRows();
+    this.dataSource.paginator = this.paginator;
+    this.openSnackBar();
+  }
+
   private readingStatusToString(status: ReadingStatus): string {
 
     switch (status) {
@@ -120,13 +128,15 @@ export class BooksListComponent implements OnInit {
     const dialogRef = this.dialog.open(AddBookDialogComponent, {
       width: '250px',
       minWidth: '500px',
-      data: {book: book, mode: 'edit'}
+      data: {book, mode: 'edit'}
     });
+
+    window.event.stopPropagation();
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       if (result) {
-        this.addBookToList(result);
+        this.editExistingBook(result);
       }
     });
   }
