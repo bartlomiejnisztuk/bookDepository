@@ -1,0 +1,8 @@
+1. Upload files : ebook and book cover
+2. Refactor: fix books-list component - divide into smaller parts (ex. buttons for edit, change status)
+3. Fully implement statuses (display proper button and colors)
+4. Add login page
+5. Ebook download
+6. Buy hosting plan on webio and deploy app
+7. WORK ON BACKEND!!!
+8.

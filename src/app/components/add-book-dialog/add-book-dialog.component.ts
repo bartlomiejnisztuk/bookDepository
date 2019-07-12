@@ -5,7 +5,7 @@ import { Book } from '../models/book';
 
 export interface DialogData {
   book: Book;
-  mode: string
+  mode: string;
 }
 
 @Component({
@@ -14,7 +14,7 @@ export interface DialogData {
   styleUrls: ['./add-book-dialog.component.css']
 })
 
-export class AddBookDialogComponent implements OnInit {  
+export class AddBookDialogComponent implements OnInit {
   languageOptions: Array<string>;
   formatOptions: Array<string>;
   categoryOptions: Array<string>;

@@ -61,10 +61,14 @@
           <div class="example-element-symbol"> {{element.symbol}} </div>
           <div class="example-element-name"> {{element.name}} </div>
           <div class="example-element-weight"> {{element.weight}} </div> 
+          <app-file-upload></app-file-upload>
         </div>
          <div class="example-element-description">
           {{element.description}}
           <span class="example-element-description-attribution"> -- Wikipedia </span>
+        </div>
+        <div class="example-element-description">
+          <app-file-upload></app-file-upload>
         </div>
       </div>
     </td>
@@ -77,5 +81,3 @@
   </table>
   <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
 </div>
-
-<!-- <button mat-raised-button (click)="openAddBookDialog()" color="primary">Add book</button> -->

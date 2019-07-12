@@ -14,6 +14,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { SnackBarComponent } from './components/snack-bar/snack-bar.component';
+import { FileUploadComponent } from './components/file-upload/file-upload.component';
 // import './polyfills';
 
 @NgModule({
@@ -22,7 +23,8 @@ import { SnackBarComponent } from './components/snack-bar/snack-bar.component';
     BooksListComponent,
     HeaderComponent,
     AddBookDialogComponent,
-    SnackBarComponent
+    SnackBarComponent,
+    FileUploadComponent
   ],
   imports: [
     BrowserModule,

@@ -7,11 +7,6 @@ import { ReadingStatus } from '../models/readingStatus';
 import { SnackBarComponent } from '../snack-bar/snack-bar.component';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 
-// export interface Book {
-//   author: string;
-//   title: string;
-// }
-
 const COLORS: string[] = ['orange', 'green', 'purple',
   'black', 'gray'];
 
@@ -69,28 +64,28 @@ export class BooksListComponent implements OnInit {
     this.booksList.push(book);
     this.table.renderRows();
     this.dataSource.paginator = this.paginator;
-    this.openSnackBar()
+    this.openSnackBar('New book added!');
   }
 
   editExistingBook(book: Book): void {
-    let bookToEditIndex = this.booksList.findIndex(x => x.title === book.title);
+    const bookToEditIndex = this.booksList.findIndex(x => x.title === book.title);
     this.booksList.splice(bookToEditIndex, 1, book); // removes and adds edited entry
     this.table.renderRows();
     this.dataSource.paginator = this.paginator;
-    this.openSnackBar();
+    this.openSnackBar('Book updated!');
   }
 
   private readingStatusToString(status: ReadingStatus): string {
 
     switch (status) {
       case ReadingStatus.InProgress:
-        return "In Progress";
+        return 'In Progress';
       case ReadingStatus.NotStarted:
-        return "New";
+        return 'New';
       case ReadingStatus.Suspended:
-        return "Suspended";
+        return 'Suspended';
       case ReadingStatus.Completed:
-        return "Completed";
+        return 'Completed';
       default:
         break;
     }
@@ -141,9 +136,10 @@ export class BooksListComponent implements OnInit {
     });
   }
 
-  openSnackBar() {
+  openSnackBar(message: string) {
     this.snackBar.openFromComponent(SnackBarComponent, {
       duration: 2 * 1000,
+      data: {message}
     });
   }
 
